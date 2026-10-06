@@ -1,1 +1,35 @@
+name: pipeline2
+ 
+on:
+  push:
+    benachs:
+      -main 
+      
+jobs:
+  
+   extract-job:
+     runs-on: ubuntu-latest
+   steps:
+     - name: checkout code
+       uses: actions/checkout@v2
 
+     - name: Run extract.py
+       run: python extract.py 
+
+   transfer-job:
+        runs-on: ubuntu-latest
+   steps:
+     - name: checkout code
+       uses: actions/checkout@v2
+
+     - name: Run transfer.py
+       run: python transfer.py 
+
+   load- job:
+           runs-on: ubuntu-latest
+   steps:
+     - name: checkout code
+       uses: actions/checkout@v2
+
+     - name: Run load.py
+       run: python load.py 
